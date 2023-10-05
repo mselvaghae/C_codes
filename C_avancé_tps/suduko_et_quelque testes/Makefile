@@ -21,5 +21,5 @@ teZZt.o: teZZt.h teZZt.c
 	${CC} ${OPTIONS} -c teZZt.c
 
 clean:
-	rm -f mon_code.o teZZt.o main.o prog sudoku *.gch
+	rm -f mon_code.o teZZt.o main.o prog sudoku.o sudoku *.gch
 
