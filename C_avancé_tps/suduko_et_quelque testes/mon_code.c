@@ -4,6 +4,7 @@
 // c est bien DANS CE FICHIER qu'il faut le faire
 
 int pgcd(int a, int b) {
+
    int pgcd = 0;
    pgcd = a%b;
    while (pgcd != 0){
@@ -16,6 +17,7 @@ int pgcd(int a, int b) {
 }
 
 void majuscules(char s[]) {
+   
    int i = 0;
    while (s[i] != '\0'){
       if((s[i] >= 'a')&&(s[i] <= 'z')){
