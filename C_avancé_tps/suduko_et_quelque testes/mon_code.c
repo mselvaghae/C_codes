@@ -12,7 +12,6 @@ int pgcd(int a, int b) {
       pgcd = a%b;
    }
    pgcd = b ;
-	
    return pgcd ;
 }
 
