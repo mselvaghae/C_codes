@@ -7,32 +7,30 @@
 
 int main(){
    srand(time(NULL));
-   int tab[N][N] ={0};
-
-   for(int j=0 ; j<N ; ++j) 
-   {
-     for(int i=0 ; i<N ; ++i)
-      tab[j][i] = (i + j*3 +j /3) %9 +1 ; 
-   }
 
    printf("/**                             *******SUDOKU*******                                **/\n");
-
+   
    int grill[N][N] = {{0}} ;
    int remplisage = 0;
+
    //int * tab = (int *)malloc(4 * sizeof(int));
+
    remplisage+=initPlan(grill);
-   while(remplisage < N*N){
-    printf("nombre de cas remplis %d\n", remplisage);
+
+   while(remplisage < N*N)
+   {
+    printf("le nombre des cases remplis est %d\n", remplisage);
+    
     printPlan(grill);
+
     //tab = saisirNumber(grill);
-    remplisage+=/*tab[3]*/saisirNumber(grill);;
+
+    remplisage+=/*tab[3]*/saisirNumber(grill);
    }
     //free(tab);
     printPlan(grill);
    
-   {(VerifieGrill(grill))? printf("merci ,vous étes gagné ;)\n"): printf("merci vous avez perdu :(\n") ;}
-  
-  
+   {(VerifieGrill(grill))? printf("merci ,vous avez perdu :(\n") :  printf("merci ,vous avez gagné ;)\n") ;}
 
 }
 
@@ -45,7 +43,7 @@ int initPlan(int grill[N][N]){
                 grill[j][i] = (i + j*3 +j /3) %9 +1 ;
                 remplisage++;
             }            
-        }
+        }   
     }
     return remplisage;
 
@@ -82,55 +80,31 @@ int  saisirNumber(int grill[N][N]) {
     return /*Donnée*/remplisage;
     //free(Donnée);
 }
-/*
-int verifieLigneColone(int grill[N][N], int nomber, int sens, int lignej, int colonei) {
-    int result = 1;
-
-    if ((lignej >= 0 || lignej <= 8) && (colonei >= 0  colonei <= 8)) {
-        if (sens == HORZT) {
-            int i = 0;
-            while (i < N ) {
-                if ((grill[lignej][i] == nomber)&&(i!=colonei)) {
-                    result = 0;
-                }
-                i++;
-            }
-        } else {
-            int i = 0;
-            while (i < N ) {
-                if ((grill[i][colonei] == nomber)&&(i!= lignej)) {
-                    result = 0;
-                }
-                i++;
-            }
-        }
-    }
-    return result;
-}*/
 
 int verifieLigneColone(int grill[N][N], int nomber, int sens, int lignej, int colonei) {
     int result = 1;
+
     if (lignej < 0 || lignej >= N || colonei < 0 || colonei >= N) {
-        result = 0; // Invalid indices, return 0
+       return 0; // Invalid indices, return 0
     }
-
-    if (sens == HORZT) {
-        for (int i = 0; i < N; i++) {
-            if (i != colonei && grill[lignej][i] == nomber) {
-                result = 0; // Number already exists in the same row, return 0
-            }
-        }
-    } else {
-        for (int i = 0; i < N; i++) {
-            if (i != lignej && grill[i][colonei] == nomber) {
-                result = 0; // Number already exists in the same column, return 0
-            }
+   if (sens == HORZT) 
+   {
+    for (int i = 0; i < N; i++) {
+        if ( i != colonei && grill[lignej][i]  ==  nomber ) {
+            result = 0; // Number already exists in the same row, return 0
         }
     }
-
-    return result; // No conflicts found, return 1
+   } else 
+   {
+    for (int i = 0; i < N; i++) {
+        if (i != lignej && grill[i][colonei] ==  nomber  ) {
+            result = 0; // Number already exists in the same column, return 0
+        }
+    }
+   }
+    
+    return result;
 }
-
 
 
 int verifieRgeion(int grill[N][N], int k, int l) {
