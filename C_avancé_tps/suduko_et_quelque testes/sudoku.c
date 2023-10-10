@@ -30,7 +30,7 @@ int main(){
     //free(tab);
     printPlan(grill);
    
-   {(VerifieGrill(grill))? printf("merci ,vous étes gagné ;)\n"): printf("merci vous avez perdu :(\n");}
+   {(VerifieGrill(grill))? printf("merci ,vous étes gagné ;)\n"): printf("merci vous avez perdu :(\n") ;}
   
   
 
@@ -82,23 +82,23 @@ int  saisirNumber(int grill[N][N]) {
     return /*Donnée*/remplisage;
     //free(Donnée);
 }
-
+/*
 int verifieLigneColone(int grill[N][N], int nomber, int sens, int lignej, int colonei) {
     int result = 1;
 
-    if ((lignej >= 0 && lignej <= 8) && (colonei >= 0 && colonei <= 8)) {
+    if ((lignej >= 0 || lignej <= 8) && (colonei >= 0  colonei <= 8)) {
         if (sens == HORZT) {
             int i = 0;
-            while (i < N && result) {
-                if (grill[lignej][i] == nomber) {
+            while (i < N ) {
+                if ((grill[lignej][i] == nomber)&&(i!=colonei)) {
                     result = 0;
                 }
                 i++;
             }
         } else {
             int i = 0;
-            while (i < N && result) {
-                if (grill[i][colonei] == nomber) {
+            while (i < N ) {
+                if ((grill[i][colonei] == nomber)&&(i!= lignej)) {
                     result = 0;
                 }
                 i++;
@@ -106,7 +106,31 @@ int verifieLigneColone(int grill[N][N], int nomber, int sens, int lignej, int co
         }
     }
     return result;
+}*/
+
+int verifieLigneColone(int grill[N][N], int nomber, int sens, int lignej, int colonei) {
+    int result = 1;
+    if (lignej < 0 || lignej >= N || colonei < 0 || colonei >= N) {
+        result = 0; // Invalid indices, return 0
+    }
+
+    if (sens == HORZT) {
+        for (int i = 0; i < N; i++) {
+            if (i != colonei && grill[lignej][i] == nomber) {
+                result = 0; // Number already exists in the same row, return 0
+            }
+        }
+    } else {
+        for (int i = 0; i < N; i++) {
+            if (i != lignej && grill[i][colonei] == nomber) {
+                result = 0; // Number already exists in the same column, return 0
+            }
+        }
+    }
+
+    return result; // No conflicts found, return 1
 }
+
 
 
 int verifieRgeion(int grill[N][N], int k, int l) {
@@ -127,10 +151,8 @@ int VerifieGrill(int grill[N][N]){
     int result = 1;
     for (int i = 0  ; i < 3 ; i ++){
         for (int j = 0  ; j < 2 ; j ++){
-            if(verifieRgeion(grill,i,j)){
+            if(!verifieRgeion(grill,i,j)){
                 result = 0;
-                i = 3;
-                j = 2;
             }
         }
     }
