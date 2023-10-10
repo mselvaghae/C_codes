@@ -12,10 +12,17 @@ int main(){
    
    int grill[N][N] = {{0}} ;
    int remplisage = 0;
+   FILE * file = fopen("sudoku.txt","r");
+
+
+    if (file == NULL) {
+        perror("Error opening file");
+        return 1;
+    }
 
    //int * tab = (int *)malloc(4 * sizeof(int));
 
-   remplisage+=initPlan(grill);
+   remplisage+=/*initPlan(grill)*/initFicher(file,grill);
 
    while(remplisage < N*N)
    {
@@ -32,6 +39,7 @@ int main(){
    
    {(VerifieGrill(grill))? printf("merci ,vous avez perdu :(\n") :  printf("merci ,vous avez gagné ;)\n") ;}
 
+   fclose(file);
 }
 
 
@@ -39,7 +47,7 @@ int initPlan(int grill[N][N]){
     int remplisage =0;
     for (int j =0; j < N ; j ++){
         for (int i =0; i < N ; i ++){
-            if (rand()%10 < DIFICULTY){
+            if (rand()%10 < FACILITY){
                 grill[j][i] = (i + j*3 +j /3) %9 +1 ;
                 remplisage++;
             }            
@@ -47,6 +55,21 @@ int initPlan(int grill[N][N]){
     }
     return remplisage;
 
+}
+
+int initFicher(FILE * file , int grill[N][N]){
+  int remplisage =0;
+    for (int j =0; j < N ; j ++){
+        for (int i =0; i < N ; i ++){
+           
+            fscanf(file,"%d ",&grill[j][i]);
+            if (rand()%10 < DIFICULTY){
+                grill[j][i] = 0 ;
+                remplisage++;
+            }                        
+        }   
+    }
+    return remplisage;  
 }
 
 int  saisirNumber(int grill[N][N]) {
