@@ -1,7 +1,7 @@
 #ifndef _SUDOKU_H
 #define _SUDOKU_H
 
-#define N 3
+#define N 9
 #define HORZT 0
 #define VERT 1
 #define DIFICULTY 9
