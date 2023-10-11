@@ -1,25 +1,12 @@
 OPTIONS=-Wall -Wextra -g
 CC=gcc
-LD=gcc
 
-prog: mon_code.o teZZt.o main.o
-	${LD} -o prog mon_code.o teZZt.o main.o -g
+Flood_it: Flood_it.o
+	${CC} -o Flood_it  Flood_it.o -g
 
-sudoku: sudoku.o
-	${LD} -o sudoku  sudoku.o -g
-
-mon_code.o: mon_code.c mon_code.h
-	${CC} ${OPTIONS} mon_code.c -c
-
-main.o: mon_code.h teZZt.h sudoku.h main.c
-	${CC} ${OPTIONS} main.c -c
-
-sudoku.o: sudoku.c sudoku.h
-	${CC} ${OPTIONS} sudoku.c -c
-
-teZZt.o: teZZt.h teZZt.c
-	${CC} ${OPTIONS} -c teZZt.c
+Flood_it.o: Flood_it.c Flood_it.h
+	${CC} ${OPTIONS} Flood_it.c -c
 
 clean:
-	rm -f mon_code.o teZZt.o main.o prog sudoku.o sudoku *.gch
+	rm -f Flood_it.o Flood_it *.gch
 
