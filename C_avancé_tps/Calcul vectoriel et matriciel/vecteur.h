@@ -7,7 +7,7 @@
 
 typedef float*  VecteurType;
  void    vecteurToFile(FILE * ,VecteurType ,int  );
-// float * vecteurFromFileByName();
-// float   produitScalaire();
+float * vecteurFromFileByName(char * name , int * ordre);
+float   produitScalaire(VecteurType v1 , VecteurType v2 , int ordre);
 
 #endif

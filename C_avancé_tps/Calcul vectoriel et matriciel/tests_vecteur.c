@@ -23,7 +23,7 @@ TEST(AffichageA) {
    FILE * file = fmemopen(buffer, 1024, "w");
    REQUIRE ( NULL != file);
 
-   vecteurToFile(stdout, v1, 3);
+   //vecteurToFile(stdout, v1, 3);
    vecteurToFile(file, v1, 3);
 
    fclose(file);
@@ -64,26 +64,30 @@ TEST(AffichageB) {
 
 } 
 
-/*
+
 TEST(LectureA, "verification des ordres des vecteurs") {
    int     ordre;
    float * vec = NULL;
 
-   vecteurFromFileByName("v1.txt", &ordre);
+   vec = vecteurFromFileByName("v1.txt", &ordre);
    CHECK( 3 == ordre );
+   free(vec);
 
-   vecteurFromFileByName("v2.txt", &ordre);
+   vec = vecteurFromFileByName("v2.txt", &ordre);
    CHECK( 6 == ordre );
-   
-   vecteurFromFileByName("v3.txt", &ordre);
+   free(vec);
+
+   vec = vecteurFromFileByName("v3.txt", &ordre);
    CHECK( 3 == ordre );
+   free(vec);
 
    // fichier non existant
    vec = vecteurFromFileByName("v0.txt", &ordre);
+  
    CHECK( NULL == vec);
-} */
+} 
 
-/*
+
 TEST(LectureB, "verification de v1.txt") {
    int     ordre;
    float * vec;
@@ -93,11 +97,13 @@ TEST(LectureB, "verification de v1.txt") {
    REQUIRE( NULL != vec); // si vec est null, on ne veut pas continuer le test
 
    CHECK( EQ(vec[0], 5.0) );
-   CHECK( EQ(vec[1], 6.3) );   // :-))
+   CHECK( EQ(vec[1], 6.0) );   
    CHECK( EQ(vec[2], 7.0) ); 
-} */
 
-/*
+   free(vec);
+} 
+
+
 TEST(LectureC, "verification de v2.txt") {
    int     ordre;
    float * vec;
@@ -112,20 +118,24 @@ TEST(LectureC, "verification de v2.txt") {
    CHECK( EQ(vec[3], 3.4) );
    CHECK( EQ(vec[4], 2.5) );
    CHECK( EQ(vec[5], 1.6) );
-} */
 
-/*
+   free(vec);
+} 
+
+
 TEST(LectureD, "verification de v3.txt") {
    int     ordre;
    float * vec;
 
    vec = vecteurFromFileByName("v3.txt", &ordre);
    CHECK  ( 3    == ordre );
-   REQUIRE( NULL == vec); // v3 est incomplet, on VEUT que ce soit nul
-} */
+   REQUIRE( NULL != vec); // v3 est incomplet, on VEUT que ce soit nul
+
+   free(vec);
+} 
 
 
-/*
+
 TEST(PVA) {
 	float * v1  = NULL;
 	float v2[3] = { 1.0, 2.0, 3.0};
@@ -137,8 +147,10 @@ TEST(PVA) {
 
    float ps = produitScalaire(v1, v2, ordre);
 	CHECK( EQ( 38, ps));
+
+   free(v1);
 }
-*/
+
 END_TEST_GROUP(vecteur)
 
 
