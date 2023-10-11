@@ -5,8 +5,8 @@
 
 #include <stdio.h>
 
-// prototypes incomplets des fonctions a coder
-// void    vecteurToFile();
+typedef float*  VecteurType;
+ void    vecteurToFile(FILE * ,VecteurType ,int  );
 // float * vecteurFromFileByName();
 // float   produitScalaire();
 

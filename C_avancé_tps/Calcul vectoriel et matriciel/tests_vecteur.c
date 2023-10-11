@@ -11,33 +11,33 @@ TEST(Exemple) {
 	int b = 3;
 	
 	CHECK (3 == b);
-	CHECK (0 == b);
+	CHECK (0 != b);
 } 
 
-/*
+
 TEST(AffichageA) {
    // vecteur statique a afficher
-   float v1 [] = {1.0, 2.0, 3.0 };
+   float v1 [] = {1.00, 2.00, 3.00 };
    // creation du flux de texte => buffer
    char buffer[1024];
    FILE * file = fmemopen(buffer, 1024, "w");
-   // REQUIRE ( NULL != file);
+   REQUIRE ( NULL != file);
 
-   // vecteurToFile(stdout, v1, 3);
+   vecteurToFile(stdout, v1, 3);
    vecteurToFile(file, v1, 3);
 
-   fclose(file);requires executable stack (because the .note.GNU-stack section is executable)
+   fclose(file);
 
    // verification de ce qui est envoye sur le flux
    // chaque composante est affichee avec trois chiffre apres la virgule
    // %.3f
    CHECK( 0==strcmp(buffer, "3\n1.000 2.000 3.000") );
-} */
+} 
 
-/*
+
 TEST(AffichageB) {
    // vecteur dynamique a afficher
-   float * v1 = NULL;requires executable stack (because the .note.GNU-stack section is executable)
+   float * v1 = NULL;
    // creation du flux de texte => buffer
    char buffer[1024];
 
@@ -56,13 +56,13 @@ TEST(AffichageB) {
    vecteurToFile(file, v1, 3);
 
    fclose(file);
-
+   free(v1);
    // verification de ce qui est envoye sur le flux
    // chaque composante est affichee avec trois chiffre apres la virgule
    // %.3f
    CHECK( 0==strcmp(buffer, "3\n3.000 2.000 1.000") );
 
-} */
+} 
 
 /*
 TEST(LectureA, "verification des ordres des vecteurs") {
