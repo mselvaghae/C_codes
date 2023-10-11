@@ -1,7 +1,6 @@
 #include "vecteur.h"
 #include<stdlib.h>
 
-// definition des fonctions declarees dans vecteur.h
 
 /*
 void    vecteurToFile() 

@@ -1,8 +1,8 @@
-OPTIONS=-Wall -Wextra -g
+OPTIONS=-Wall -Wextra -g 
 CC=gcc
  
 prog: vecteur.o teZZt.o tests_vecteur.o
-	${CC} -o prog vecteur.o teZZt.o tests_vecteur.o -g
+	${CC} -o prog vecteur.o teZZt.o tests_vecteur.o -g 
 
 vecteur.o: vecteur.c vecteur.h
 	${CC} ${OPTIONS} vecteur.c -c
