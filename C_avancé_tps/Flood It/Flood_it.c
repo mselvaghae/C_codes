@@ -67,22 +67,22 @@ int afficheGame(int matGame[TAILL][TAILL]) {
         for (int j = 0; j < TAILL; j++) {
             switch (matGame[i][j]) {
                 case 0 :
-                  printf("\033[41m%d \033[0m",matGame[i][j]);
+                 printf("\033[41m%d  \033[0m",matGame[i][j]);
                 break;
                 case 1 :
-                 printf("\033[42m%d \033[0m",matGame[i][j]);
+                 printf("\033[42m%d  \033[0m",matGame[i][j]);
                 break;
                 case 2 :
-                 printf("\033[43m%d \033[0m",matGame[i][j]);
+                 printf("\033[43m%d  \033[0m",matGame[i][j]);
                 break;
                 case 3 :
-                 printf("\033[44m%d \033[0m",matGame[i][j]);
+                 printf("\033[44m%d  \033[0m",matGame[i][j]);
                 break;
                 case 4 :
-                 printf("\033[45m%d \033[0m",matGame[i][j]);
+                 printf("\033[45m%d  \033[0m",matGame[i][j]);
                 break;
                 case 5 :
-                  printf("\033[46m%d \033[0m",matGame[i][j]);
+                  printf("\033[46m%d  \033[0m",matGame[i][j]);
                 break;
 
             }

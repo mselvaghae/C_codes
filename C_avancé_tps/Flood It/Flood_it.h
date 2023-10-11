@@ -3,7 +3,7 @@
 
 #define COULEUR 6
 #define TAILL 12
-#define MAXCOUP 22
+#define MAXCOUP 25
 
 int initGame(int matGame[TAILL][TAILL]);
 int afficheGame(int matGame[TAILL][TAILL]);
