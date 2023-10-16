@@ -15,7 +15,7 @@ BEGIN_TEST_GROUP(tableau_structure)
 TEST(fgets) {
    char exemple [] = "scanf, c'est pas bien\n";
    LOG(exemple);
-   char chaine1[25];
+   char chaine1[25]= "mini bali";
    char chaine2[10];
 
    FILE * file = fmemopen(exemple, sizeof(exemple)+1, "r");
@@ -39,14 +39,14 @@ TEST(fgets) {
    fclose(file);
 }
 
-/*
+
 TEST(Sizeof) {
 	int taille1 = sizeof(struct donnee);
-   int taille2 = sizeof(int)+100*sizeof(char); // :-)
+   int taille2 = sizeof(int)+140*sizeof(char); 
 
 	CHECK (taille1 == taille2);
 }
-*/
+
 
 /*
 // pas de test mais un exemple simple de manipulation
@@ -63,7 +63,7 @@ TEST(AffichageA) {
 
 } */
 
-/*
+
 TEST(AffichageB) {
    struct donnee essai;
    strcpy(essai.nom, "pokemon GO");
@@ -81,9 +81,9 @@ TEST(AffichageB) {
    fclose(file);
 
    CHECK( 0 == strcmp(buffer, "pokemon GO : loic avec 498\n") );
-}*/
+}
 
-/*
+
 TEST(AffichageC) {
    donnee_t essai;
    strcpy(essai.nom, "overwatch");
@@ -101,25 +101,28 @@ TEST(AffichageC) {
    fclose(file);
 
    CHECK( 0 == strcmp(buffer, "overwatch : loic avec 2300\n") );
-} */
+} 
 
-/*
+
 TEST(Saisie) {
    struct donnee essai;
    char buffer[1024];
    strcpy(buffer, "rien\ndutout\n10");
    FILE * file = fmemopen(buffer, 1024, "r");
    // REQUIRE ( NULL != file);
-
+   char * str = "lslsjslj\n";
    saisirDonnee(file, &essai);
    fclose(file);
 
    afficherDonnee(stdout, essai);
-
-   CHECK(  0 == strcmp(essai.nom, "rien") );
-   CHECK(  0 == strcmp(essai.alias, "dutout") );
-   CHECK( 10 == essai.score );   
-} */
+   str = enlevalaligne(str);
+   CHECK(  0 == strcmp(essai.nom, "rien\n") );
+   CHECK(  0 == strcmp(str, "lslsjslj") );
+   printf("%s\n",str);
+   CHECK(  0 == strcmp(essai.alias, "dutout\n") );
+   CHECK( 10 == essai.score );  
+   free(str);
+} 
 
 /*
 TEST(lectureFichier) {

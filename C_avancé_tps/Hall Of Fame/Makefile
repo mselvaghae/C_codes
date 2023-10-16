@@ -1,17 +1,17 @@
 OPTIONS=-Wall -Wextra -g 
 CC=gcc
  
-prog: vecteur.o teZZt.o tests_vecteur.o
-	${CC} -o prog vecteur.o teZZt.o tests_vecteur.o -g 
+prog: hall_of_fame.o teZZt.o hall_of_tests.o
+	${CC} -o prog hall_of_fame.o teZZt.o hall_of_tests.o -g 
 
-vecteur.o: vecteur.c vecteur.h
-	${CC} ${OPTIONS} vecteur.c -c
+hall_of_fame.o: hall_of_fame.c hall_of_fame.h
+	${CC} ${OPTIONS} hall_of_fame.c -c
 
-tests_vecteur.o: vecteur.h teZZt.h  tests_vecteur.c
-	${CC} ${OPTIONS} tests_vecteur.c -c 
+hall_of_tests.o: hall_of_fame.h teZZt.h  hall_of_tests.c
+	${CC} ${OPTIONS} hall_of_tests.c -c 
 
 teZZt.o: teZZt.h teZZt.c
 	${CC} ${OPTIONS} -c teZZt.c
 
 clean:
-	rm -f teZZt.o vecteur.o tests_vecteur.o prog *gch
+	rm -f teZZt.o hall_of_fame.o hall_of_tests.o prog *gch
