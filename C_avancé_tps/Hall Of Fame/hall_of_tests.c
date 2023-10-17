@@ -116,15 +116,13 @@ TEST(Saisie) {
 
    afficherDonnee(stdout, essai);
    str = enlevalaligne(str);
-   CHECK(  0 == strcmp(essai.nom, "rien\n") );
-   CHECK(  0 == strcmp(str, "lslsjslj") );
-   printf("%s\n",str);
-   CHECK(  0 == strcmp(essai.alias, "dutout\n") );
+   CHECK(  0 == strcmp(essai.nom, "rien") );
+   CHECK(  0 == strcmp(essai.alias, "dutout") );
    CHECK( 10 == essai.score );  
    free(str);
 } 
 
-/*
+
 TEST(lectureFichier) {
    donnee_t tableau[TAILLE_MAX];
    int taille = 0;
@@ -144,7 +142,7 @@ TEST(lectureFichier) {
    CHECK  ( 0 == strcmp(tableau[1].alias, "kiux")); 
    CHECK  ( 12304883 == tableau[1].score );
 }
-*/
+
 
 END_TEST_GROUP(tableau_structure)
 

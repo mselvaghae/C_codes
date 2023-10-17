@@ -3,7 +3,7 @@
 // implementation des fonctions a ecrire
 // c est bien DANS CE FICHIER qu'il faut le faire
 
-int pgcd(int a, int b) {
+/*int pgcd(int a, int b) {
 
    int pgcd = 0;
    pgcd = a%b;
@@ -14,6 +14,15 @@ int pgcd(int a, int b) {
    }
    pgcd = b ;
    return pgcd ;
+}*/
+int pgcd(int a , int b){
+    int r=b;
+    while (a%r!=0){
+        a=r;
+        r=a%r;
+
+    }
+    return r ;
 }
 
 void majuscules(char s[]) {
