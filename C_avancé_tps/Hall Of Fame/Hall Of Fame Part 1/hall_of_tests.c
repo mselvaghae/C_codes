@@ -109,17 +109,16 @@ TEST(Saisie) {
    char buffer[1024];
    strcpy(buffer, "rien\ndutout\n10");
    FILE * file = fmemopen(buffer, 1024, "r");
-   // REQUIRE ( NULL != file);
-   char * str = "lslsjslj\n";
+
    saisirDonnee(file, &essai);
    fclose(file);
 
    afficherDonnee(stdout, essai);
-   str = enlevalaligne(str);
+   
    CHECK(  0 == strcmp(essai.nom, "rien") );
    CHECK(  0 == strcmp(essai.alias, "dutout") );
    CHECK( 10 == essai.score );  
-   free(str);
+   
 } 
 
 
@@ -147,7 +146,9 @@ TEST(lectureFichier) {
 END_TEST_GROUP(tableau_structure)
 
 
+
 int main(void) {
 	RUN_TEST_GROUP(tableau_structure); 
+   printf("\n");
  	return 0;
 }

@@ -5,6 +5,7 @@
 // et de leur typedef si besoin
 
 #define TAILLE_MAX 1024
+
 typedef struct donnee{
     int score;
     char nom[100];
@@ -14,7 +15,7 @@ typedef struct donnee{
 
 /* DECLARATIONS DES METHODES */
 void afficherDonnee(FILE *, donnee_t);
-char * enlevalaligne(char * s);
+char * supenter(char * str);
 void saisirDonnee (FILE * , donnee_t *);
 int tableauFromFilename(char * nom, donnee_t tableau[]);
 // mettre ici les autres declarations
