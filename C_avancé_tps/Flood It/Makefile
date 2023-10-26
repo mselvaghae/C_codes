@@ -1,17 +1,21 @@
-OPTIONS=-Wall -Wextra -g
-CC=gcc
+CC = gcc
+CFLAGS = -Wall -Wextra
+LDFLAGS = -lSDL2 -lm
+TARGET = Flood_it_SDL
+SOURCES = Flood_it.c Flood_it_SDL.c
+OBJECTS = $(SOURCES:.c=.o)
 
-Flood_it: Flood_it.o
-	${CC} -o Flood_it  Flood_it.o -g
+all: $(TARGET)
 
-Flood_it.o: Flood_it.c Flood_it.h
-	${CC} ${OPTIONS} Flood_it.c -c
+$(TARGET): $(OBJECTS)
+	$(CC) $^ -o $@ $(LDFLAGS)
 
-Flood_it_SDL: Flood_it_SDL.o
-	${CC} -o Flood_it_SDL  Flood_it_SDL.o -g
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-Flood_it_SDL.o: Flood_it_SDL.c Flood_it_SDL.h
-	${CC} ${OPTIONS} Flood_it_SDL.c -c
 clean:
-	rm -f Flood_it.o Flood_it  Flood_it_SDL.o Flood_it_SDL *.gch
+	rm -f $(OBJECTS) $(TARGET)
+
+.PHONY: all clean
+
 

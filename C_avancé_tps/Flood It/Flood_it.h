@@ -5,6 +5,7 @@
 #define TAILL 12
 #define MAXCOUP 25
 
+
 int initGame(int matGame[TAILL][TAILL]);
 int afficheGame(int matGame[TAILL][TAILL]);
 void remplirGame(int matGame[TAILL][TAILL], int CouleurChoisi, int CouleurOriginale, int ligne, int colonne );

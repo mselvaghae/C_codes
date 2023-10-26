@@ -4,7 +4,8 @@
 #include <time.h>
 #include "Flood_it.h"
 
-int main() {
+/*int main() {
+    srand(time(NULL));
     int matGame[TAILL][TAILL];
     initGame(matGame);
     int coupCounter = 0;
@@ -34,10 +35,10 @@ int main() {
 
     {(fin(matGame)? printf("vous avez gagné !! \n") : printf("vous avez perdu !! \n"));}
     return 0;
-}
+}*/
 
 int initGame(int matGame[TAILL][TAILL]) {
-    srand(time(NULL));
+    
     
     for (int i = 0; i < TAILL; i++) {
         for (int j = 0; j < TAILL; j++) {
@@ -53,13 +54,13 @@ void remplirGame(int matGame[TAILL][TAILL], int CouleurChoisi, int CouleurOrigin
         return ; // Invalid indices, return 0
     } 
 
+    
+   if(matGame[ligne][colonne] == CouleurOriginale){
     matGame[ligne][colonne] = CouleurChoisi;
-   
     remplirGame(matGame, CouleurChoisi, CouleurOriginale, ligne - 1, colonne); 
     remplirGame(matGame, CouleurChoisi, CouleurOriginale, ligne + 1, colonne); 
     remplirGame(matGame, CouleurChoisi, CouleurOriginale, ligne, colonne - 1); 
-    remplirGame(matGame, CouleurChoisi, CouleurOriginale, ligne, colonne + 1);
-
+    remplirGame(matGame, CouleurChoisi, CouleurOriginale, ligne, colonne + 1); }
 }
 
 int afficheGame(int matGame[TAILL][TAILL]) {
