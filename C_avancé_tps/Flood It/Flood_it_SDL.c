@@ -15,45 +15,39 @@ SDL_Color intToColor(int number) {
     switch (number) {
         case 0:
             myColor.r = 255;
-            myColor.g = 255;
-            myColor.b = 255;
+            myColor.g = 0;
+            myColor.b = 0;
             myColor.a = 255;
             break;
         case 1:
-            myColor.r = 255;
-            myColor.g = 0;
+            myColor.r = 0;
+            myColor.g =255;
             myColor.b = 0;
             myColor.a = 255;
             break;
         case 2:
-            myColor.r = 0;
-            myColor.g = 0;
-            myColor.b = 255;
-            myColor.a = 255;
-            break;
-        case 3:
-            myColor.r = 0;
-            myColor.g = 255;
-            myColor.b = 0;
-            myColor.a = 255;
-            break;
-        case 4:
-            myColor.r = 0;
-            myColor.g = 255;
-            myColor.b = 255;
-            myColor.a = 255;
-            break;
-        case 5:
             myColor.r = 255;
             myColor.g = 255;
             myColor.b = 0;
             myColor.a = 255;
             break;
-        default:
+        case 3:
             myColor.r = 0;
             myColor.g = 0;
-            myColor.b = 0;
-            myColor.a = 255; // Default color for unknown numbers
+            myColor.b = 255;
+            myColor.a = 255;
+            break;
+        case 4:
+            myColor.r = 238;  
+            myColor.g = 130;
+            myColor.b = 238;
+            myColor.a = 255;
+            break;
+        case 5:
+            myColor.r = 0;
+            myColor.g = 0;
+            myColor.b = 139;
+            myColor.a = 255;
             break;
     }
     return myColor;
@@ -61,18 +55,19 @@ SDL_Color intToColor(int number) {
 
 void afficherFenetre(SDL_Renderer *renderer, int matGame[TAILL][TAILL], int width, int height) {
     SDL_RenderClear(renderer);
-    SDL_Rect rect[TAILL][TAILL];
-    SDL_Color myColor;
+    SDL_Rect rect;
+    rect.w = width / TAILL;
+    rect.h = height / TAILL;
+    //SDL_Color myColor;
     
     for (int i = 0; i < TAILL; i++) {
         for (int j = 0; j < TAILL; j++) {
-            myColor = intToColor(matGame[i][j]);
-            SDL_SetRenderDrawColor(renderer, myColor.r, myColor.g, myColor.b, myColor.a);
-            rect[i][j].x = i * (width / TAILL);
-            rect[i][j].y = j * (height / TAILL);
-            rect[i][j].w = width / TAILL;
-            rect[i][j].h = height / TAILL;
-            SDL_RenderFillRect(renderer, &rect[i][j]);
+            int number = matGame[i][j];
+            SDL_Color myColor = intToColor(number);
+            SDL_SetRenderDrawColor(renderer, myColor.r, myColor.g, myColor.b, 255);
+            rect.x = i * (width / TAILL);
+            rect.y = j * (height / TAILL);           
+            SDL_RenderFillRect(renderer, &rect);
         }
     }
     SDL_RenderPresent(renderer);
@@ -114,6 +109,11 @@ int main() {
     int coupCounter = 0;
     int running = 1;
 
+    //afficheGame(matGame);
+
+    afficherFenetre(renderer, matGame, width, height);
+
+
     while (running) {
         while (SDL_PollEvent(&event)) {
             switch (event.type) {
@@ -146,7 +146,7 @@ int main() {
         remplirGame(matGame, CouleurChoisi, CouleurOriginale, 0, 0);
         afficherFenetre(renderer, matGame, width, height);
 
-        if (coupCounter >= MAXCOUP) {
+        if ((coupCounter >= MAXCOUP) || (fin(matGame))) {
             running = 0;
         }
 
