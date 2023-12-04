@@ -17,7 +17,7 @@ int initGame(int matGame[TAILL][TAILL]) {
 }
 
 void remplirGame(int matGame[TAILL][TAILL], int CouleurChoisi, int CouleurOriginale, int ligne, int colonne ) {
-    if (!(ligne < 0 || ligne >= TAILL || colonne < 0 || colonne >= TAILL || matGame[ligne][colonne] != CouleurOriginale)) {
+    if (!(ligne < 0 || ligne >= TAILL || colonne < 0 || colonne >= TAILL || matGame[ligne][colonne] != CouleurOriginale|| CouleurChoisi == CouleurOriginale)) {
        matGame[ligne][colonne] = CouleurChoisi;
        remplirGame(matGame, CouleurChoisi, CouleurOriginale, ligne - 1, colonne); 
        remplirGame(matGame, CouleurChoisi, CouleurOriginale, ligne + 1, colonne); 

@@ -75,7 +75,8 @@ void afficherFenetre(SDL_Renderer *renderer, int matGame[TAILL][TAILL], int widt
 
 int main() {
     srand(time(NULL));
-    int matGame[TAILL][TAILL];
+    int matGame[TAILL][TAILL] = {{0}};
+
     initGame(matGame);
     
     int CouleurChoisi = -1;
