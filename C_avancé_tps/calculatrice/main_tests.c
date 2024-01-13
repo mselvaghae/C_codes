@@ -30,7 +30,7 @@ TEST(identification_avec_enum) {
   CHECK( NONE == identification_enum("t"));
 }
 
-  TEST(control_eval_f) {
+TEST(control_eval_f) {
    CHECK( EQ( 0.0, evalf( 0.0, ID)));
    CHECK( EQ( 0.0, evalf( 0.0, SIN)));
    CHECK( EQ( 1.0, evalf( 0.0, COS)));
@@ -42,6 +42,22 @@ TEST(identification_avec_enum) {
    CHECK( EQ( exp(M_PI) , evalf( M_PI, EXP)));
    
    CHECK( EQ( 0.0 , evalf( M_PI/2.0, COS)));
+}
+
+TEST(control_eval_p) {
+  CHECK( EQ( 1.0, evalp( 1.0, ID)));
+  CHECK( EQ( 0.0, evalp( 0.0, SIN)));
+  CHECK( EQ( 1.0, evalp( 0.0, COS)));
+  printf("%f\n",evalp( 0.0, COS));
+  CHECK( EQ( 1.0, evalp( 0.0, EXP)));
+
+  CHECK( EQ(      M_PI , evalp( M_PI, ID)));
+  CHECK( EQ(       1.0 , evalp( M_PI/2, SIN)));
+  //printf();
+  CHECK( EQ(      -1.0 , evalp( M_PI, COS)));
+  CHECK( EQ( exp(M_PI) , evalp( M_PI, EXP)));
+   
+  CHECK( EQ( 0.0 , evalp( M_PI/2.0, COS)));
 }
 
 
