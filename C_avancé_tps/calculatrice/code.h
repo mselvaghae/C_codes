@@ -11,27 +11,22 @@ typedef enum ope {
 } OP;
 
 
-int identification(char *str);
+int identification(char c);
 int identification_enum(char *str);
+
+double mul (double a, double b);
+double add (double a, double b);
+double sou (double a, double b);
+double dyv (double a, double b);
+
 double identite(double v);
-/*double sin(double v);
-double cos(double v);
-double log(double v);
-double exp(double v);*/
 double erreur() ;
 
 
-double evalf(double v , OP operations);
+double elementaire(double a ,double b,int op);
+double elementaire_optimale(double a ,double b,char c);
 double evalp(double v , OP operations);
-void calcul (double a,double b, double delta , OP operation , FILE * file);
-//pret
+void calcul (double a,double b, double delta ,OP exp1 ,OP exp2,char op, FILE * file);
 
-
-
-
-
-// fichier d'entete classique ou l'on declare les types necessaires, 
-// les fonctions implementees dans le fichier .c
-// les declaration de variables globales externes
 
 #endif
