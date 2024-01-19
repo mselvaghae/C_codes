@@ -18,5 +18,5 @@ main_tests.o:code.h teZZt.h main_tests.c
 teZZt.o:teZZt.h teZZt.c
 	${CC} ${CFLAGS} -c teZZt.c
 clean:
-	rm -f *.gch main.o main_tests.o code.o main main_tests teZZt.o
+	rm -f *.gch main.o main_tests.o fonctions_elementaire.o code.o main main_tests teZZt.o
 
