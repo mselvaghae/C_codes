@@ -1,36 +1,14 @@
 #include "code.h"
 
-const char OPER_NAMES[]= { '+', '-', '*', '/'}; 
+
 const char * EXP_NAMES[]= { "x", "sin(x)", "cos(x)", "log(x)", "exp(x)", NULL }; 
 OP operations[] = {ID, SIN, COS, LOG, EXP};
 
-double mul (double a, double b){ return a*b;}
-double add (double a, double b){return a+b;}
-double sou (double a, double b){return a-b;}
-double dyv (double a, double b){
-    if(0==b){
-        printf("valeur indeterminé");
-        return -1;
-    }
-    return a/b;
-}
-
-double identite(double v) { return v;}
-double erreur() {
-    fprintf(stderr,"%s\n","erreur parametre ou la fonction");
-    return -1; 
-}
 
 double (*tab2[]) (double, double) = { mul, add, NULL, sou, NULL, dyv };
 double (*OPER_FN [])(double) = { identite, sin, cos, log, exp, erreur };
 
-int identification(char c){
-    for (int i=0 ; i<4 ; i++){
-        if(c == OPER_NAMES[i]) return i;
-    }
-    return -1;
-
-}
+struct s donnees[256];
 
 int identification_enum(char *str){
     for (int i=0 ; EXP_NAMES[i]!= NULL ; i++){
@@ -39,29 +17,7 @@ int identification_enum(char *str){
     return NONE;
 }
 
-double elementaire(double a ,double b,int op){
-    double result = 0;
-    switch (op){
-        case 0:
-         result = a+b;
-        break;
-        case 1 :
-         result = a-b;
-        break;
-        case 2:
-         result =a*b;
-        break;
-        case 3:
-          if(0==b)
-          {
-            printf("valeur indeterminé");
-            return -1;
-          }
-          result = a/b;
-        break; 
-    }
-    return result;
-}
+
 double elementaire_optimale(double a ,double b,char c){
     if((c-'*' <= -1 || c-'*' >= 6 ) || tab2[c-'*']==NULL){
         printf("\noperation n'existe pas\n");
