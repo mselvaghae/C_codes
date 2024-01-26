@@ -9,7 +9,7 @@ TEST(premier_test) {
 
    CHECK( 1 );
 }
-
+/*
 TEST(identification_avec_indice) {
   CHECK(  0 == elementaire_optimale(1,-1,'+'));
   CHECK(  2 == elementaire_optimale(1,1,'+'));
@@ -42,10 +42,28 @@ TEST(control_eval_p) {
   CHECK( EQ( exp(M_PI) , evalp( M_PI, EXP)));
    
   CHECK( EQ( 0.0 , evalp( M_PI/2.0, COS)));
+}*/
+double x = 10.0;
+struct s donnees[] = {
+    {VAR, .data.var = &x},    
+    {VAL, .data.val = 3.0},     
+    {F2, .data.f2 = add},       
+    {FIN, {0}}                 
+};
+
+TEST(evaluer_) {
+  CHECK(  13 == evaluer(donnees));
+  x=3;
+  CHECK(  6 == evaluer(donnees));
+  x=4;
+  CHECK(  7 == evaluer(donnees));
+  x=5;
+  CHECK(  8 == evaluer(donnees));
+  x=17;
+  CHECK(  20 == evaluer(donnees));
 }
 
 
-// NE PAS COMMENTER CETTE LIGNE
 END_TEST_GROUP(code)
 //pru
 // NE PAS COMMENTER CETTE FONCTION

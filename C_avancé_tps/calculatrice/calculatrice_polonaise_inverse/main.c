@@ -3,6 +3,8 @@
 #include "code.h"  // Assurez-vous que ce fichier existe et est correct
 #include "teZZt.h" // Assurez-vous que ce fichier existe et est correct
 
+//double (*tab2[]) (double, double) = { mul, add, NULL, sou, NULL, dyv };
+
 int main() {
     char chain1[1024]="";  // Taille augmentée pour une chaîne de caractères plus réaliste
     char chain[1024]="";
@@ -34,9 +36,14 @@ int main() {
         printf(" 2 Échec de l'analyse des entrées.\n");
         return 0;
     }
-	//printf("%s %d %d %d",chain1,a,b,delta);
-	//pri
+	
+    struct s donnees[] = {
+        convertir(exp1),    
+        convertir(exp2),     
+        {F2, .data.f2 = tab2[op-'*']},       
+        {FIN, {0}}                 
+    };
 
-    calcul(a, b, delta, identification_enum(exp1),identification_enum(exp2),op,stdout);
+    calcul(a, b, delta, donnees,stdout);
     return 0;
 }

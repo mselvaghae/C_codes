@@ -1,0 +1,47 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<style>
+		p, h1, h2, table, li {
+		 font-family: "Arial";
+		}
+
+		p {
+			text-alig:justify;
+		}
+	</style>
+</head>
+<body>
+<h1>Exercice 1</h1>
+
+<h2>Codage d'une conversion hexadécimal vers décimal</h2>
+
+<p>Sans utiliser les fonctions des bibliothèques <b>string.h</b> ou <b>stdio.h</b>, convertir un nombre donné dans une chaîne de caractères représentant un nombre hexadécimal POSITIF en le nombre décimal correspondant.</p>
+
+<h2>Décomposition d'entiers en facteurs de nombres premiers</h2>
+
+<p>Un nombre premier est un entier naturel qui n'admet que deux diviseurs : 1 et lui-même. 0 et 1 ne sont pas premiers. Pour déterminer si un nombre <code>n</code> est premier, il existe plein de techniques. Nous vous proposons d'utiliser un l'algorithme peu efficace comme celui qui consiste à essayer de diviser par tous les entiers entre 2 et <code>racine_carree(n)</code>.</p>
+
+<p>Nous vous demandons ensuite de décomposer un nombre <code>n</code> en facteurs premiers (tous plus petits que <code>n</code>, les facteurs étant listés dans une chaîne de caractères, du plus petit au plus grand). Pour cela, il suffit de chercher le plus petit diviseur premier <code>a</code> de <code>n</code>,  de remplacer le nombre <code>n</code> par le quotient <code>n/a</code> jusqu'à obtenir 1 (le dernier nombre <code>n</code> est donc premier)</p>
+
+<p>Pour 44, le plus petit entier diviseur est 2 et on obtient 22=44/2. 2 est encore diviseur de 22 car 22=2*11. 11 est premier alors la recherche est terminée : 44 = 2*2*11.</p>
+
+<p>La dernière étape consiste à donner une forme condensée à la recherche des facteurs premiers du nombre demandé : 44 = 2^2*11</p>
+
+<h2>Création, lecture et multiplication de matrices carrées</h2>
+
+<p>La première fonction à écrire crée <b>dynamiquement</b> une matrice carrée identité d'ordre (taille) donné.</p> 
+
+<p>Pour construire la matrice, vous devez allouer un tableau de lignes puis les lignes une à une. Pour éviter la duplication de code, vous pouvez créer un fonction qui crée un matrice "nulle" de taille donnée, tant que celle-ci est définie dans le fichier .c</p>
+
+<p>La deuxième fonction à écrire est la fonction de libération de la mémoire associée à la matrice dont l'ordre est également donné.</p>
+
+<p>On s'intéresse ensuite à la lecture dans un fichier d'une matrice carrée. On lit tout d'abord l'ordre de la matrice carrée, puis les éléments un par un (ligne par ligne). Si on peut lire le fichier, on estime que le contenu est correct. La fonction de lecture crée la matrice dynamiquement.</p>
+
+<p>La dernière étape consiste à calculer le produit matriciel des deux matrices carrées données en paramètre. Le produit est encore créé dynamiquement.</p>
+
+<p>Si on cherche à calculer C = (c<sub>ij</sub>) = A * B, on a la relation suivante : c<sub>ij</sub> = somme<sub>k</sub>(a<sub>ik</sub>*b<sub>kj</sub>)</p>
+
+<p>Le rendu-mémoire sera vérifié.</p>
+
+</body></html>
